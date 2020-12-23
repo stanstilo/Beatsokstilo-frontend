@@ -1,0 +1,34 @@
+.latest-beat-container{
+    background-color: #fdf7fd;
+    width:80%;
+    margin:80px auto;
+    height:240px;
+    padding-top:60px
+}
+
+
+.beats_headline{
+    background-color:#1418a2;
+    width:120px;
+    height:30px;
+    background-image: linear-gradient(#8f4d29, #faf5d5);
+    transform: skewY(-6deg);
+    transform-origin: top left;
+    margin-left:4%;
+  }
+  .beats_headline h4{ 
+    font-size:1rem;
+    text-transform:uppercase;  
+  }
+  hr{
+   padding:1px;
+   border:0;
+   box-shadow:0 10px 10px -10px #8c8b8b inset;
+   background-color: #8f4d29;
+   width:60%;
+   margin-left:4%;
+   
+ }
+ .hr-container{
+    margin-top:-15px
+ }

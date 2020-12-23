@@ -1,0 +1,29 @@
+label {
+    display: block;
+    margin-bottom: .5em;
+    margin-top: 1.5em;
+    text-transform:capitalize;
+   }
+.InputElement {
+    border: .2em solid #efe3d6;
+    border-radius: .2em;
+    max-width: 400px;
+    margin: 3em auto;
+    padding: 1em;
+ }
+   input[type="email"],
+   input[type="password"] {
+    width: 100%;
+    padding: .5em;
+    transition: .5s ease-out;
+   }
+   
+   input[type="email"],
+   input[type="password"]:focus {
+    outline: 1px solid #bd493c
+   }
+
+.Invalid {
+    border: 1px solid red;
+    background-color: #FDA49A;
+}

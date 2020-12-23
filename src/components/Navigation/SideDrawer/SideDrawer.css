@@ -1,0 +1,62 @@
+.SideDrawer {
+    position: fixed;
+    width: 280px;
+    max-width: 70%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background-color: white;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+}
+.times-bt-container{
+    border:none;
+    border:2px solid #f2f2f2;
+    width:22%;
+    border-radius:50%;
+    height:50px;
+    position:relative;
+    margin-left:80%;
+    outline:none;   
+}
+.times-bt{
+ outline:none;
+ border:none;
+ background:none;
+ color:#333333;
+ font-size: 45px;
+ position:absolute;
+ bottom:-9px;
+ left:2px
+}
+@media(max-width:340px){
+    .times-bt{
+        left:-2px
+    }
+}
+.times-bt:focus{
+    border:none;
+    outline:none;
+}
+
+
+@media (min-width: 500px) {
+    .SideDrawer {
+        display: none;
+    }
+}
+
+.Open {
+    transform: translateX(0);
+}
+
+.Close {
+    transform: translateX(-100%);
+}
+
+.Logo {
+    height: 11%;
+    margin-bottom: 32px;
+}

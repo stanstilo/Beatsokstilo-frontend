@@ -1,0 +1,10 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" class="process js-animate" width="960" height="120" viewBox="0 0 960 120">
+		<g opacity="0.8">
+			<polygon class="design" id="polygon-anim" fill="#56ccb7" points="0,120 144,101 298,36 355,43 403,25 480,72 780,120"/>
+			<polygon class="discover" id="polygon-anim" fill="#ebd6ce" points="0,120 67,47 144,75 261,79 297,107 469,120"/>
+			<polygon class="implement" id="polygon-anim" fill="#ff00ac" points="345,120 385,105 508,29 558,68 614,88 692,89 835,120"/>
+			<polygon class="deliver"  id="polygon-anim" fill="#fea837" points="577,120 788,29 898,60 960,120"/>
+			<polygon class="develop" id="polygon-anim" fill="#2e3192" points="393,120 538,85 624,14 681,25 788,87 922,120"/>
+		</g>
+</svg>
