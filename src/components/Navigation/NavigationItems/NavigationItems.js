@@ -10,10 +10,13 @@ import SearchItem from "../SearchItem/SearchItem";
 library.add(faSearch);
 library.add(faUserPlus);
 
+
 const NavigationItems = ({ history }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [dropdownOpen, setdropdownOpen] = useState(false);
-  const [showBeats, setShowBeats] = useState([]);
+  const [searchBeats, setSearchBeats] = useState([]);
+  const [search, setSearch] = useState('')
+  const [query, setQuery] = useState('joo')
 
   const handleToggleSearchImg = () => setShowSearch(!showSearch);
   const handleMouseEnter = (prevState) =>
@@ -24,6 +27,9 @@ const NavigationItems = ({ history }) => {
     handleBorderForClick();
   }, []);
 
+  // useEffect(() => {
+  //   getBeats()
+  // }, [query])
   const handleBorderForClick = () => {
     let midNavItem = document.querySelectorAll(".mid-nav-item > li");
 
@@ -45,18 +51,28 @@ const NavigationItems = ({ history }) => {
   };
 
   const getBeats = async (e) => {
-    const beatName = e.target.elements.beatName.value;
-    e.preventDefault();
-    const url = "http://localhost:5000/upload";
+    // const beatName = e.target.elements.beatName.value;
+    const url = 'http://localhost:5000/upload/';
     try {
       const response = await axios.get(url);
-      const responseData = await response;
-      setShowBeats(responseData.data);
+      const responseData = await response
+      console.log(responseData);
+      setSearchBeats(responseData.data);
     } catch (err) {
       console.log(err);
     }
   }
 
+  const getSearch = e => {
+    e.preventDefault()
+    setQuery(search)
+    setSearch('')
+  }
+
+  const updateSearch = e => {
+    setSearch(e.target.value)
+  }
+  
   return (
     <>
       <ul className="NavigationItems">
@@ -158,9 +174,11 @@ const NavigationItems = ({ history }) => {
             <p onClick={() => history.push("/sell-beats")}>sell beats</p>
           </div>
         </div>
+        
+        {/* search form group */}
         <form
           className="show-search"
-          onSubmit={(e) => getBeats(e)}
+          onSubmit={getSearch}
           style={{ display: showSearch ? "block" : "none" }}
          >
           <input
@@ -168,12 +186,14 @@ const NavigationItems = ({ history }) => {
             type="text"
             placeholder="search instrumental here"
             name="beatName"
+            value={search}
+            onChange = {updateSearch}
           />
           <button className="search-button">Search</button>
         </form>
       </div>
-      <div className = "SearchItem-Container mt-5">
-        <SearchItem showBeats = {showBeats}/>
+      <div className = "SearchItem-Container mt-4">
+        <SearchItem  searchBeats = {searchBeats} search={search}/>
       </div>
     </>
   )

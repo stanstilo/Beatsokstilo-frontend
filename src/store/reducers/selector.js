@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import playerContext from '../../components/Context/playerContext';
+
 
 //auth selector
 const selectAuth = (state) => state.authReducer;
@@ -9,7 +9,7 @@ export const isLoadingSelector = createSelector([selectAuth], auth => auth.loadi
 
 
 // beat selector
-const beatSelector = (state) => state.beatReducer;
+ const beatSelector = (state) => state.beatReducer;
 export const allBeatSelector = createSelector([beatSelector], beat => beat.beatInfo)
 export const singleBeatSelector = createSelector([beatSelector], beat => beat.singleBeat)
 

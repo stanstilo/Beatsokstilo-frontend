@@ -7,9 +7,9 @@ const initialState = {
   repeat: false,
   random: false,
   playing: false,
+  isPlayShown: false,
   audio: null,
   audioPlayer: true,
-  playButton: false,
   showAudio:"",
   volum:0.3,
   duration:0,
@@ -17,7 +17,7 @@ const initialState = {
   musicId:[]
 }
 
-export default (state=initialState, action) => {
+export default (state= initialState, action) => {
     // Prev song
     const prevSong = () => {
       if (state.currentSong === 0) {
@@ -53,7 +53,7 @@ export default (state=initialState, action) => {
     case actionTypes.SET_CURRENT_SONG:
       return {
         ...state,
-        currentSong: handleEnd(state.currentSong,action.data),
+        currentSong: handleEnd(state.currentSong, action.data),
         playing: true
       }
     case actionTypes.TOGGLE_RANDOM:
@@ -66,22 +66,27 @@ export default (state=initialState, action) => {
         ...state,
         repeat: action.data
       }
-    // case actionTypes.TOGGLE_PLAYING:
-    //   return {
-    //     ...state,
-    //     playing: true
-    //   }
       case actionTypes.TOGGLE_PLAYBUTTON:
         return{
           ...state,
           playButton:!state.playButton
         }
-      case actionTypes.SHOW_AUDIOPLAYER:
+
+      case actionTypes.SHOW_AUDIOPLAYER:       
+        const handleSetPlay = () => {
+          if(state.musicId === action.payload){
+            return !state.playing 
+          }else{
+            return true
+          }
+        }
         return{
           ...state,
           musicId:action.payload,
-          playing: true
+          isPlayerShown: true,
+          playing: handleSetPlay()
         }
+
       case actionTypes.SETVOLUME:
         return{
           ...state,
@@ -97,7 +102,7 @@ export default (state=initialState, action) => {
           ...state,
           time: action.payload
         }
-    default:
+     default:
       return state
   }
 }

@@ -2,11 +2,6 @@ import axios from 'axios'
 import * as actionTypes from './actionTypes'
 import {stopSubmit, reset} from "redux-form" 
 
-export const authStart = () => {
-    return{
-        type: actionTypes.AUTH_START
-    }
-}
 
 export const authSuccess = (token, userId) => {
     return{
@@ -73,7 +68,7 @@ export const authRegister = ({email, password, mobileNumber}) => async (dispatch
            payload:data
        })
    }catch(err){
-       dispatch({type:actionTypes.AUTH_FAIL,payload:err.response.data.error});
+       dispatch({type:actionTypes.AUTH_FAIL, payload:err.response.data.error});
        dispatch(stopSubmit("registerForm", console.log(err)))
        dispatch(reset("registerForm"))
    }

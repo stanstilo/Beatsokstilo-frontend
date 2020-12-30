@@ -17,6 +17,7 @@ const PlayerState = props => {
 
   // Set playing state
   const togglePlaying = () => dispatch({ type: actionTypes.TOGGLE_PLAYING, data: state.playing ? false : true })
+
   // Set current song
   const SetCurrent = id => dispatch({ type: actionTypes.SET_CURRENT_SONG, data: id })
 

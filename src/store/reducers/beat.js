@@ -1,10 +1,10 @@
 import * as actionTypes from "../actions/actionTypes";
 
-
 const initialState = {
     beatInfo:[],
-    singleBeat:[]
-
+    singleBeat:{
+        mp3File: ''
+    }
 }
 
   export default (state = initialState, action) => {

@@ -24,6 +24,7 @@ class Layout extends React.Component {
             <>
                 <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <SideDrawer open={showSideDrawer} closed={this.sideDrawerClosedHandler} />        
+            
                 <main>
                     {this.props.children}
                 </main>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Home from "./containers/Home/Home";
+import Home from "./components/Pages/Home/Home";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Layout from "./hoc/Layout/Layout";
 import LoginForm from "./components/Auth/Login";
@@ -9,20 +9,26 @@ import UploadBeat from "./components/Pages/UploadBeat/UploadBeat";
 import BuyBeats from "./components/Pages/BuyBeats/BuyBeats";
 import SellBeats from "./components/Pages/SellBeats/SellBeats";
 import FreeBeat from "./components/Pages/FreeBeat/FreeBeat";
-import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
-import NewTest from "./components/AudioPlayer/NewTest";
+import PlayerId from "./components/AudioPlayer/PlayerId";
 import BuyBeatsDetails from "./components/Pages/BuyBeats/BuyBeatsDetails";
 import { fetchBeatUpload, fetchSingleBeat } from "./store/actions/beat";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import './App.css'
+import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 
-const App = ({ musicId, playing }) => {
+const App = () => {
+  const reduxState = useSelector(state => state)
+  const {musicId, showAudio, playing} = reduxState.playerReducer.musicId
+  const {mp3File}= reduxState.beatReducer.singleBeat
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchBeatUpload());
   }, []);
   
- 
+  
+  const audio = useRef("audio_tag");
+
   return (
     <>
     <div>
@@ -38,43 +44,17 @@ const App = ({ musicId, playing }) => {
           <Route path="/buy-beats" component={BuyBeats} />
           <Route path="/sell-beats" component={SellBeats} />
           <Route path="/upload-beat" exact component={UploadBeat} />
-          <Route
-            path="/free-beat"
-            exact
-            render={(props) => (
-              <FreeBeat {...props}   playing={playing}/>
-            )}
-          />
+          <Route path="/free-beat" exact component={FreeBeat} />
           <Route path="/buy-beats-details" component={BuyBeatsDetails} />
-          <Route path="/audioplayer/:id" component={NewTest} />
+          <Route path="/audioplayer/:id" component={PlayerId} />
         </Switch>
       </Layout>
-      <AudioPlayer
-        musicId={musicId}
-        playing={playing}
-        // toggleAudio={toggleAudio}
-        // audio={audio}
-      />
+       <div className ='audioplayer'>
+         <AudioPlayer/>
+       </div>
     </div>
-    <audio/>
     </>
   );
 };
 
-const mapStateToPops = (state) => ({
-  showAudio: state.playerReducer.showAudio,
-  musicId: state.playerReducer.musicId,
-  playing: state.playerReducer.playing,
-});
-export default withRouter(connect(mapStateToPops, { fetchBeatUpload })(App));
-// const audio = useRef("audio_tag");
-// const [statevolum, setStateVolum] = useState(0.3);
-// const [dur, setDur] = useState(0);
-// const [currentTime, setCurrentTime] = useState(0);
-
-// const { _id, imageFile, title, name, mp3File, description } = beat;
-
-// const toggleAudio = () =>
-//   audio.current.paused ? audio.current.play() : audio.current.pause();
-
-// const togglePlayButton = () => {};
+export default withRouter(App);

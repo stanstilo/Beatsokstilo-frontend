@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
-import { togglePlayButton, togglePlaying } from "../../../store/actions/player";
+import { togglePlaying } from "../../../store/actions/player";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
 import { playButtonSelector } from "../../../store/reducers/selector";
@@ -13,6 +13,7 @@ library.add(faPlay, faPause);
 const BuyBeatsMap = ({ beat, togglePlaying, handleEnd, togglePlayButton}) => {
   const audio = useRef("audio_tag");
   const { price, title, bpm, mp3File } = beat;
+  
   const toggleAudio = () =>
     audio.current.paused ? audio.current.play() : audio.current.pause();
   
@@ -80,4 +81,4 @@ const mapStateToProps = createStructuredSelector({
   playButton:playButtonSelector
 });
 
-export default connect(mapStateToProps, {togglePlaying, togglePlayButton})(BuyBeatsMap);
+export default connect(mapStateToProps, {togglePlaying})(BuyBeatsMap);

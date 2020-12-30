@@ -1,11 +1,12 @@
 import React from 'react'
+import './SearchItem.css'
 
-export default function SearchItem({showBeats}) {
+export default function SearchItem({searchBeats}) {
     return (
     <div className = "search-card">
-      {showBeats.map((beat) => {
+      {searchBeats.map((beat) => {
        return (
-       <div key = {beat.id}>
+       <div key = {beat._id}>
          <p>{beat.title}</p>
        </div>
       )

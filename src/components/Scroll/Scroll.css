@@ -2,7 +2,8 @@
     width:40px;
     height:40px;
     position:fixed;
-    right:15px;bottom:15px;
+    right:15px;
+    bottom:15px;
     line-height:45px;
     border-radius: 10px;
     background: -webkit-linear-gradient(left, #757373 0%, #69aed8 50%, #40a4c8 100%);
