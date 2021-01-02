@@ -10,7 +10,6 @@ const initialState = {
   isPlayShown: false,
   audio: null,
   audioPlayer: true,
-  showAudio:"",
   volum:0.3,
   duration:0,
   time:0,

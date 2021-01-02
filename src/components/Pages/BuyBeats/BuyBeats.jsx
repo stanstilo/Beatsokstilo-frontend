@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import { fetchSell } from "../../../store/actions/sell";
 import { sellSelector } from "../../../store/reducers/selector";
 import BuyBeatsMap from "./BuyBeatsMap";
-import './styles/BuyBeats.css'
+import './BuyBeats.css'
 
 
  const BuyBeats = ({sellInfo}) => {

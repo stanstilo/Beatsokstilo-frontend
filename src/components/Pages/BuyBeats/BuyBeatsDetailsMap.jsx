@@ -1,5 +1,5 @@
 import React from "react"
-import './styles/BuyBeats.css'
+import './BuyBeats.css'
 
 
 const BuyBeatsDetailsMap = () => {  

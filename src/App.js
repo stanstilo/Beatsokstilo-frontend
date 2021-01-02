@@ -13,7 +13,6 @@ import PlayerId from "./components/AudioPlayer/PlayerId";
 import BuyBeatsDetails from "./components/Pages/BuyBeats/BuyBeatsDetails";
 import { fetchBeatUpload, fetchSingleBeat } from "./store/actions/beat";
 import { useDispatch, useSelector } from "react-redux";
-import './App.css'
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 
 const App = () => {
@@ -28,7 +27,8 @@ const App = () => {
   
   
   const audio = useRef("audio_tag");
-
+  
+  const toggleAudio = () => audio.current.paused ? audio.current.play() : audio.current.pause();
   return (
     <>
     <div>
@@ -44,14 +44,11 @@ const App = () => {
           <Route path="/buy-beats" component={BuyBeats} />
           <Route path="/sell-beats" component={SellBeats} />
           <Route path="/upload-beat" exact component={UploadBeat} />
-          <Route path="/free-beat" exact component={FreeBeat} />
+          <Route path="/free-beat" exact component = {FreeBeat} />
           <Route path="/buy-beats-details" component={BuyBeatsDetails} />
           <Route path="/audioplayer/:id" component={PlayerId} />
         </Switch>
       </Layout>
-       <div className ='audioplayer'>
-         <AudioPlayer/>
-       </div>
     </div>
     </>
   );

@@ -10,7 +10,6 @@ const  NewTest =({singleBeat, match})=> {
     useEffect(() =>{
         dispatch(fetchSingleBeat(match.params.id))
     },[])
-    
     return (
         <div>
            <AudioPlayer mp3Beats={singleBeat.mp3File}/>
@@ -21,3 +20,5 @@ const  NewTest =({singleBeat, match})=> {
     singleBeat: state.beatReducer.singleBeat
 })
 export default connect(Props)(NewTest)
+
+
