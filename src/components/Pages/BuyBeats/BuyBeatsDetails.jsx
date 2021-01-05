@@ -13,7 +13,7 @@ import './BuyBeats.css'
  dispatch(fetchSingleSell(match.params.id))
  }, [])
 
-//  const beatsLoop = singleSell.map(beat => {
+
     const {imageFile, bpm, title, name, _id } = singleSell
     return (
        <>
@@ -40,16 +40,6 @@ import './BuyBeats.css'
     </div>
     </>
     )
-// })
-   // return (
-   //   <>
-   //       <div className = "all-containers">
-   //       <div className="container">
-   //          {beatsLoop}  
-   //       </div>
-   //       </div>
-   //   </>
-   // );
 }
 
 const mapBeat = createStructuredSelector({
