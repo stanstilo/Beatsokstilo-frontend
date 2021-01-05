@@ -1,0 +1,144 @@
+.UploadBeat-Container {
+  border: 0.2em solid #efe3d6;
+  border-radius: 0.2em;
+  margin:24px auto;
+  width: 60%;
+   box-sizing: border-box;
+  padding: 1em; 
+}
+.heading-text {
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-top: 1em;
+}
+label {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+  cursor: pointer;
+}
+.row_1 {
+  display: flex;
+  justify-content: space-between;
+}
+.row_2 {
+  display: flex;
+  justify-content: space-between;
+}
+.row_3 {
+  display: flex;
+  justify-content: space-between;
+}
+.row_4 {
+  display: flex;
+  justify-content: space-between;
+}
+.column-label-name,
+.column-label-email,
+.column-label-inst,
+.column-label-mobile,
+.column-label-art,
+.column-label-mp3 {
+  width: 45%;
+}
+.column-input-name,
+.column-input-email,
+.column-input-title,
+.column-input-mobile
+ {
+  width: 45%;
+}
+.column-input-art,
+.column-input-mp3{
+  width: 45%;
+  margin-top:-30px
+}
+#name,
+#email,
+#mobile,
+#title {
+  width: 100%;
+}
+
+.input-mp3, .input-art{
+  width:100%;
+}
+
+input[type="text"] {
+  padding: 0.5em;
+  transition: 0.5s ease-out;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  outline: 0.5px solid #8a6048;
+}
+input[type="tel"],
+input[type="email"] {
+  transition: 0.5s ease-out;
+  box-sizing: border-box;
+  padding: 0.5em;
+}
+input[type="tel"],
+input[type="email"]:focus {
+  outline: 0.5px solid #8a6048;
+}
+
+textarea {
+  transition: 0.5s ease-out;
+  width: 100%;
+  height: 80px;
+}
+textarea:focus {
+  outline: 0.5px solid #8a6048;
+}
+.submit-button {
+  display: block;
+  border-radius: 8px;
+  border: none;
+  padding: 1em;
+  width: 30%;
+  font-weight: bold;
+  color: white;
+  background: #8a6048;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  margin-top: 1em;
+  transition: 0.15s ease-out;
+}
+
+.submit-button:hover {
+  background: #8a6048;
+  opacity: 0.9;
+}
+.file-row-1 {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+.file-row-2 {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-md-11{
+  margin:0 auto
+}
+@media (max-width:864px){
+  .file-row-2,.file-row-1 {
+   display:flex;
+   flex-flow: column wrap;
+  }
+  .column-label-mp3{
+    margin-top:60px;
+   
+  }
+  .column-label-mp3 label,  .column-label-art label{
+    margin-top:-7px;
+  }
+  .column-input-art{
+    margin-top:-127px;
+  }
+}

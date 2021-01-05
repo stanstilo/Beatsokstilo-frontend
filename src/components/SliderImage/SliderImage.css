@@ -1,0 +1,34 @@
+
+.slide-container{
+    height:250px;
+  }
+
+  span{
+      height:5px
+  }
+  
+ .slider-text{
+     font-size: 1.7rem;
+     position:absolute;
+     top:200px;
+     width:100%;
+    color:#fff;
+    font-weight: 600;
+    text-align:center;
+    text-transform: capitalize;
+ }
+ .slider-text-sm{
+    font-size: 1.7rem;
+    position:absolute;
+    top:130px;
+    width:65%;
+   color:#409799;
+   font-weight: 600;
+   text-transform: capitalize;
+   margin-left:25%
+}
+
+ .image-slide{
+     position:relative;
+     width:100%
+ }

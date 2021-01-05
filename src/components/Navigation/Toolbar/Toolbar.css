@@ -1,0 +1,12 @@
+ .Toolbar{
+    background-color:#faf5d5;
+    height:64px;
+    width:100%;
+    position:relative;
+}
+
+@media (max-width: 870px) {
+    .DesktopOnly {
+        display: none;
+    }
+} 
