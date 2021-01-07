@@ -3,7 +3,7 @@ import { SetCurrent } from "../actions/player";
 
 const initialState = {
   currentSong: 0,
-  songs: true,
+  songs: '',
   repeat: false,
   random: false,
   playing: false,
@@ -48,6 +48,7 @@ export default (state= initialState, action) => {
       }
     }
   }
+  
   switch (action.type) {
     case actionTypes.SET_CURRENT_SONG:
       return {
@@ -85,7 +86,20 @@ export default (state= initialState, action) => {
           isPlayerShown: true,
           playing: handleSetPlay()
         }
-
+      
+        // case actionTypes.PLAY_AUDIO:
+        //   const handleSetPlay = () => {
+        //     if(state.musicId === action.payload){
+        //       return !state.playing 
+        //     }else{
+        //       return true
+        //     }
+        //   }
+        //   return{
+        //     ...state,
+        //     playing:handleSetPlay()
+        //   }
+          
       case actionTypes.SETVOLUME:
         return{
           ...state,

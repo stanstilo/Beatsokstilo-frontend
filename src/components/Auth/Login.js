@@ -40,7 +40,7 @@ const renderField = ({
   </div>
 )
 
-const LoginForm = ({authLogin,handleSubmit, submitting, auth, error, history }) => {
+const LoginForm = ({authLogin, handleSubmit, submitting, auth, error, history }) => {
   const submit = values =>{
     authLogin(values);
   }

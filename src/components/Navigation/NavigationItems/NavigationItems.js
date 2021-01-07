@@ -56,7 +56,6 @@ const NavigationItems = ({ history }) => {
     try {
       const response = await axios.get(url);
       const responseData = await response
-      console.log(responseData);
       setSearchBeats(responseData.data);
     } catch (err) {
       console.log(err);
@@ -89,6 +88,7 @@ const NavigationItems = ({ history }) => {
            >
             Home
           </li>
+          
           <li
             className="NavigationItem"
             id="nav-item"

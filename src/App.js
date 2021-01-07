@@ -9,16 +9,17 @@ import UploadBeat from "./components/Pages/UploadBeat/UploadBeat";
 import BuyBeats from "./components/Pages/BuyBeats/BuyBeats";
 import SellBeats from "./components/Pages/SellBeats/SellBeats";
 import FreeBeat from "./components/Pages/FreeBeat/FreeBeat";
-import PlayerId from "./components/AudioPlayer/PlayerId";
 import BuyBeatsDetails from "./components/Pages/BuyBeats/BuyBeatsDetails";
 import { fetchBeatUpload, fetchSingleBeat } from "./store/actions/beat";
 import { useDispatch, useSelector } from "react-redux";
-import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import Checkout from "./components/Pages/Checkout/Checkout";
+// import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+
 
 const App = () => {
   const reduxState = useSelector(state => state)
-  const {musicId, showAudio, playing} = reduxState.playerReducer.musicId
-  const {mp3File}= reduxState.beatReducer.singleBeat
+  // const {musicId, showAudio, playing} = reduxState.playerReducer.musicId
+  // const {mp3File}= reduxState.beatReducer.singleBeat
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -46,7 +47,7 @@ const App = () => {
           <Route path="/upload-beat" exact component={UploadBeat} />
           <Route path="/free-beat" exact component = {FreeBeat} />
           <Route path="/buy-beats-details/:id" component={BuyBeatsDetails} />
-          {/* <Route path="/audioplayer/:id" component={PlayerId} /> */}
+          <Route path="/initialize" component={Checkout}/>
         </Switch>
       </Layout>
     </div>

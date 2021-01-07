@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import React, {useRef} from 'react'
+
 
 
 export const togglePlaying = () => dispatch => {
@@ -17,6 +17,7 @@ export const setVolume = volum => dispatch=>{
 export const setDuration = duration => dispatch=>{
     dispatch({ type: actionTypes.SETDURATION, data: duration })
 }
+
 export const setCurrentTime = time => dispatch=>{
     dispatch({ type: actionTypes.SET_TIME, data: time })
 }
@@ -28,6 +29,9 @@ export const toggleRandom = (id) => dispatch=>{dispatch({ type: actionTypes.TOGG
 
 
 export const showAudioplayer = (id) => dispatch => {  
-            dispatch({type:actionTypes.SHOW_AUDIOPLAYER, payload:id})
+    dispatch({type:actionTypes.SHOW_AUDIOPLAYER, payload:id})
 }
 
+export const playAudio = id => dispatch => {
+    dispatch({type:actionTypes.PLAY_AUDIO, payload:id})
+}

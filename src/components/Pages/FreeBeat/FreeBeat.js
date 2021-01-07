@@ -11,7 +11,7 @@ import './FreeBeat.css';
 
 const FreeBeat = () => {
   const reduxState = useSelector(state => state)
-  const {playing,} = reduxState.playerReducer
+  const {playing} = reduxState.playerReducer
   const {beatInfo}= reduxState.beatReducer
 
   const audio = useRef("audio_tag");

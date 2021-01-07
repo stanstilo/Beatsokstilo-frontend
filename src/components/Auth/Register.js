@@ -7,6 +7,7 @@ import {isAuthenticatedSelector, isErrorSelector} from '../../store/reducers/sel
 import { Redirect } from 'react-router-dom'
 import Spinner from '../UI/Spinner/Spinner';
 import { StyledForm } from '../styles/Signup.style' 
+import {withRouter} from 'react-router-dom'
 
 const validate = values => {
   const errors = {}
@@ -68,7 +69,6 @@ const RegisterForm = ({authRegister, handleSubmit, submitting, auth, error, hist
          Register
         </button>
       </p>
-
         <p className="no-account">
          Already have an account <span onClick = {()=>{
           history.push('/login')
@@ -87,7 +87,7 @@ const mapstate = createStructuredSelector({
 
 let registerForm = connect(mapstate,{authRegister})(RegisterForm)
 
-export default reduxForm({
+export default withRouter(reduxForm({
   form: 'registerForm', // a unique identifier for this form
   validate, // <--- validation function given to redux-form
-})(registerForm)
+})(registerForm))

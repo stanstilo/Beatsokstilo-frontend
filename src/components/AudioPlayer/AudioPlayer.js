@@ -7,17 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleBeat } from "../../store/actions/beat";
 
 const AudioPlayer = ({ audio, handleProgress }) => {
-  const reduxState = useSelector((state) => state);
-  const {
-    musicId,
-    playing
-  } = reduxState.playerReducer;
+  const reduxState = useSelector(state => state);
+  const { musicId,  playing } = reduxState.playerReducer;
+  const {singleBeat: {mp3File}, singleBeat } = reduxState.beatReducer
+  
 
-  const {
-    singleBeat: { mp3File },
-    beatInfo,
-    singleBeat,
-  } = reduxState.beatReducer;
 
   const dispatch = useDispatch();
   const [currentPlayingMusicID, setCurrentPlayingMusicID] = useState("");
@@ -46,9 +40,9 @@ const AudioPlayer = ({ audio, handleProgress }) => {
     toggleAudio();
   }, [mp3File, playing]);
 
-  useEffect(() => {
-    console.log("TIMEUPDATE", audio.current.currentTime);
-  }, [audio.current.currentTime]);
+  // useEffect(() => {
+  //   console.log("TIMEUPDATE", audio.current.currentTime);
+  // }, [audio.current.currentTime]);
 
   return (
     <PlayerState>

@@ -7,13 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import "./DisplayBeatDetails.css";
 
 library.add(faPlay, faPause);
+
 const DisplayBeatDetails = ({ beat}) => {
   const dispatch = useDispatch();
 
   const reduxState = useSelector((state) => state);
   const handleEnd = reduxState.playerReducer.currentSong;
 
-  const { mp3File } = reduxState.beatReducer.singleBeat;
+  // const { mp3File } = reduxState.beatReducer.singleBeat;
 
   const { musicId, playing } = reduxState.playerReducer;
   const { _id, imageFile, title, name, description } = beat;
