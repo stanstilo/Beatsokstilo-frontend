@@ -6,17 +6,23 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import SearchItem from "../SearchItem/SearchItem";
+import { checkIfUserIsLoggedIn } from "../../utility"
 
 library.add(faSearch);
 library.add(faUserPlus);
 
 
-const NavigationItems = ({ history }) => {
+const NavigationItems = ({history}) => {
   const [showSearch, setShowSearch] = useState(false);
   const [dropdownOpen, setdropdownOpen] = useState(false);
   const [searchBeats, setSearchBeats] = useState([]);
   const [search, setSearch] = useState('')
   const [query, setQuery] = useState('joo')
+
+  const logOut = () => {
+    localStorage.removeItem("token")
+  history && history.push("/login")
+  }
 
   const handleToggleSearchImg = () => setShowSearch(!showSearch);
   const handleMouseEnter = (prevState) =>
@@ -88,7 +94,7 @@ const NavigationItems = ({ history }) => {
            >
             Home
           </li>
-          
+
           <li
             className="NavigationItem"
             id="nav-item"
@@ -146,11 +152,9 @@ const NavigationItems = ({ history }) => {
           className="NavigationItem"
           id="nav-item"
           id="ext-nav-item"
-          onClick={() => {
-            history.push("/login");
-          }}
+          onClick={()=> logOut()}
         >
-          Sign In
+          {checkIfUserIsLoggedIn() ? 'Sign Out' : 'Sign In'}
         </li>
         <li
           className="NavigationItem"

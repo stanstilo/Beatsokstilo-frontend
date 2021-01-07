@@ -5,7 +5,6 @@ import { authRegister } from '../../store/actions/auth';
 import {createStructuredSelector} from "reselect"
 import {isAuthenticatedSelector, isErrorSelector} from '../../store/reducers/selector'
 import { Redirect } from 'react-router-dom'
-import Spinner from '../UI/Spinner/Spinner';
 import { StyledForm } from '../styles/Signup.style' 
 import {withRouter} from 'react-router-dom'
 
@@ -42,6 +41,7 @@ const renderField = ({
 )
 
 const RegisterForm = ({authRegister, handleSubmit, submitting, auth, error, history}) => {
+  
   const submit = values =>{
     authRegister(values);  
   }

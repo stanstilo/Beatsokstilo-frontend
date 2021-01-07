@@ -5,7 +5,6 @@ import { authLogin } from '../../store/actions/auth';
 import {createStructuredSelector} from "reselect"
 import {isAuthenticatedSelector, isErrorSelector} from '../../store/reducers/selector'
 import { Redirect, withRouter } from 'react-router-dom'
-import Spinner from '../UI/Spinner/Spinner';
 import { StyledForm } from '../styles/Signin.style' 
 
 const validate = values => {
@@ -41,12 +40,15 @@ const renderField = ({
 )
 
 const LoginForm = ({authLogin, handleSubmit, submitting, auth, error, history }) => {
+
   const submit = values =>{
     authLogin(values);
   }
 
   if(auth){
-    return <Redirect to='/dashboard'/>
+    return <Redirect to ='/dashboard'/>
+  }else{
+    return <Redirect to = '/login' />
   }
 
   return (
@@ -66,7 +68,6 @@ const LoginForm = ({authLogin, handleSubmit, submitting, auth, error, history })
           Submit
         </button>
       </p>
-
         <p className="no-account" >
           Don't have an account? <span onClick = {()=>{
           history.push('/register')
@@ -82,8 +83,7 @@ const mapstate = createStructuredSelector({
   error: isErrorSelector
 })
 
-
-let loginForm = connect(mapstate,{authLogin})(LoginForm)
+let loginForm = connect(mapstate, {authLogin})(LoginForm)
 
 export default withRouter (reduxForm({
   form: 'loginForm', // a unique identifier for this form

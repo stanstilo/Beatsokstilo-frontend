@@ -46,7 +46,7 @@ const App = () => {
           <Route path="/sell-beats" component={SellBeats} />
           <Route path="/upload-beat" exact component={UploadBeat} />
           <Route path="/free-beat" exact component = {FreeBeat} />
-          <Route path="/buy-beats-details/:id" component={BuyBeatsDetails} />
+          <PrivateRoute path="/buy-beats-details/:id" render={(props) => <BuyBeatsDetails {...props}/>}/>
           <Route path="/initialize" component={Checkout}/>
         </Switch>
       </Layout>

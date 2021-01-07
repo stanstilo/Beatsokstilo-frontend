@@ -3,13 +3,13 @@ import * as actionTypes from './actionTypes'
 import {stopSubmit, reset} from "redux-form" 
 
 
-export const authSuccess = (token, userId) => {
-    return{
-        type:actionTypes.AUTH_SUCCESS,
-        idToken: token,
-        userId: userId
-    }
-}
+// export const authSuccess = (token, userId) => {
+//     return{
+//         type:actionTypes.AUTH_SUCCESS,
+//         idToken: token,
+//         userId: userId
+//     }
+// }
 
 export const authFail = (error) => {
     return{
@@ -27,12 +27,12 @@ export const authFail = (error) => {
 //    }
 // }
 
-export const checkAuthTimeout = (expirationTime) => {
-     return dispatch => {
-        setTimeout(() => {
-    },expirationTime * 1000)
-}
-} 
+// export const checkAuthTimeout = (expirationTime) => {
+//    return dispatch => {
+//     setTimeout(() => {
+//     }, expirationTime * 1000)
+// }
+// } 
 
 export const authLogin = ({email, password}) => async (dispatch) => {
     const config = {
@@ -43,6 +43,9 @@ export const authLogin = ({email, password}) => async (dispatch) => {
    const body = {email, password}
    try{
        const {data} = await axios.post("http://localhost:5000/SignIn", body, config)
+       const responseData = await data;
+       let token = data.token
+       localStorage.setItem("token", JSON.stringify(token))
        dispatch({
            type:actionTypes.AUTH_SUCCESS,
            payload:data
