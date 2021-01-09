@@ -1,10 +1,23 @@
 import React from 'react'
 import FreeBeat from '../Pages/FreeBeat/FreeBeat'
-
-
+import axios from 'axios'
 import './Main.css'
 
  const Main = () => {
+   const downloadData = async () => {
+     const urlLink = 'http://localhost:5000/file'
+     fetch(urlLink)
+     .then(response => {
+       response.blob().then(blob => {
+         let url = window.URL.createObjectURL(blob);
+         let a = document.createElement('a');
+         a.href = url;
+         a.download = 'employees.json';
+         a.click();
+       });
+       //window.location.href = response.url;
+   });
+   }
 
     return (
         <>

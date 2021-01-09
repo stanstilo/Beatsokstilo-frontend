@@ -35,10 +35,6 @@ const App = () => {
     <div>
       <Layout>
         <Switch>
-          {/* <PrivateRoute
-              path="/dashboard"
-              render={(props) => <UploadBeat {...props} />}
-            /> */}
           <Route path="/" exact component={Home} />
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./NavigationItems.css";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faUserPlus } from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +17,7 @@ const NavigationItems = ({history}) => {
   const [dropdownOpen, setdropdownOpen] = useState(false);
   const [searchBeats, setSearchBeats] = useState([]);
   const [search, setSearch] = useState('')
-  const [query, setQuery] = useState('joo')
+ 
 
   const logOut = () => {
     localStorage.removeItem("token")
@@ -35,7 +35,8 @@ const NavigationItems = ({history}) => {
 
   // useEffect(() => {
   //   getBeats()
-  // }, [query])
+  // }, [])
+
   const handleBorderForClick = () => {
     let midNavItem = document.querySelectorAll(".mid-nav-item > li");
 
@@ -57,24 +58,21 @@ const NavigationItems = ({history}) => {
   };
 
   const getBeats = async (e) => {
-    // const beatName = e.target.elements.beatName.value;
-    const url = 'http://localhost:5000/upload/';
+    const beatName = e.target.elements.beatName.value;
+    e.preventDefault()
+    const url = `http://localhost:5000/upload/${beatName}`;
     try {
       const response = await axios.get(url);
       const responseData = await response
       setSearchBeats(responseData.data);
+      setSearch('')
+      setShowSearch(true)
     } catch (err) {
       console.log(err);
     }
   }
 
-  const getSearch = e => {
-    e.preventDefault()
-    setQuery(search)
-    setSearch('')
-  }
-
-  const updateSearch = e => {
+  const handleChange = e => {
     setSearch(e.target.value)
   }
   
@@ -182,7 +180,7 @@ const NavigationItems = ({history}) => {
         {/* search form group */}
         <form
           className="show-search"
-          onSubmit={getSearch}
+          onSubmit={getBeats}
           style={{ display: showSearch ? "block" : "none" }}
          >
           <input
@@ -191,7 +189,7 @@ const NavigationItems = ({history}) => {
             placeholder="search instrumental here"
             name="beatName"
             value={search}
-            onChange = {updateSearch}
+            onChange = {handleChange}
           />
           <button className="search-button">Search</button>
         </form>

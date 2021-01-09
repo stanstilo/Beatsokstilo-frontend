@@ -1,7 +1,7 @@
 import React from 'react'
 import './SearchItem.css'
 
-export default function SearchItem({searchBeats}) {
+const SearchItem = ({searchBeats}) => {
     return (
     <div className = "search-card">
       {searchBeats.map((beat) => {
@@ -14,3 +14,4 @@ export default function SearchItem({searchBeats}) {
     </div>
     )
 }
+export default SearchItem

@@ -1,7 +1,8 @@
 import React, { useState, useRef} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import AudioPlayer from "../../AudioPlayer/AudioPlayer";
 import DisplayBeatDetails from "../../DisplayBeatDetails/DisplayBeatDetails";
+import Pagination from "../Pagination/Pagination";
 import './FreeBeat.css';
 
 // import {
@@ -12,12 +13,17 @@ import './FreeBeat.css';
 const FreeBeat = () => {
   const reduxState = useSelector(state => state)
   const {playing} = reduxState.playerReducer
-  const {beatInfo}= reduxState.beatReducer
+  const {beatInfo} = reduxState.beatReducer
 
   const audio = useRef("audio_tag");
   const [dur, setDur] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1)
+  const [beatPerPage] = useState(2)
+
+    const indexOfLastBeat = currentPage * beatPerPage
+    const indexOfFirstBeat = indexOfLastBeat - beatPerPage
+    const currentBeatInfo = beatInfo.slice(indexOfFirstBeat, indexOfLastBeat)
 
     const handleProgress = (e) => {
       let compute = (e.target.value * dur) / 100;
@@ -25,7 +31,11 @@ const FreeBeat = () => {
       audio.current.currentTime = compute;
     };
 
-  const beats = beatInfo.map(beat => {
+  // Change Page On Click
+  const paginate = pageNumber =>  setCurrentPage(pageNumber)
+
+
+  const beats = currentBeatInfo.map(beat => {
     return (
       <DisplayBeatDetails
         key={beat._id}
@@ -38,9 +48,10 @@ const FreeBeat = () => {
    return (
       <div className="container">
          <audio  ref={audio} src  onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
-         onCanPlay={(e) => setDur(e.target.duration)} type="audio/mpeg" preload="true"/> 
+          onCanPlay={(e) => setDur(e.target.duration)} type="audio/mpeg" preload="true"/> 
         
         <div className="row">{beats}</div>
+        <Pagination beatPerPage={beatPerPage} totalBeat={beatInfo.length} paginate={paginate}/>
         <div className="audioplayer">
         <AudioPlayer handleProgress={handleProgress}  audio={audio}/>
         </div>

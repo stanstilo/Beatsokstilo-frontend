@@ -13,7 +13,8 @@ import {
   faPause,
   faRandom,
   faRedoAlt,
-  faVolumeDown
+  faVolumeDown,
+  faDownload
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -23,7 +24,8 @@ library.add(
   faStepForward,
   faRandom,
   faRedoAlt,
-  faVolumeDown
+  faVolumeDown,
+  faDownload
 );
 
 const Controls = ({id, audio, handleProgress}) => {
@@ -117,6 +119,7 @@ const Controls = ({id, audio, handleProgress}) => {
         />
          {/* <ProgressBar progressPercent={progressBarWidth}/> */}
         <span className="totalT">{fmtMSS(dur)}</span>
+        <a href = {mp3File} download><FontAwesomeIcon icon = {faDownload}/></a>
       </div>
 
      {/* pls */}

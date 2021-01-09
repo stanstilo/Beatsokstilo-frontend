@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect, } from "react-redux";
 import { Field, reduxForm } from 'redux-form'
 import { authLogin } from '../../store/actions/auth';
@@ -6,6 +6,7 @@ import {createStructuredSelector} from "reselect"
 import {isAuthenticatedSelector, isErrorSelector} from '../../store/reducers/selector'
 import { Redirect, withRouter } from 'react-router-dom'
 import { StyledForm } from '../styles/Signin.style' 
+import { checkIfUserIsLoggedIn } from '../utility';
 
 const validate = values => {
   const errors = {}
@@ -41,14 +42,17 @@ const renderField = ({
 
 const LoginForm = ({authLogin, handleSubmit, submitting, auth, error, history }) => {
 
+  useEffect(() => {
+   checkIfUserIsLoggedIn() && history.push('/dashboard')
+  }, [])
+
   const submit = values =>{
     authLogin(values);
   }
 
   if(auth){
-    return <Redirect to ='/dashboard'/>
-  }else{
-    return <Redirect to = '/login' />
+    // return <Redirect to ='/dashboard'/>
+    history.push('/dashboard')
   }
 
   return (
