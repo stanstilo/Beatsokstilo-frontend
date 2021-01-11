@@ -72,7 +72,8 @@ export default (state= initialState, action) => {
           playButton:!state.playButton
         }
 
-      case actionTypes.SHOW_AUDIOPLAYER:       
+      case actionTypes.SHOW_AUDIOPLAYER: 
+      const {id, isPremium} = action.payload      
         const handleSetPlay = () => {
           if(state.musicId === action.payload){
             return !state.playing 
@@ -82,7 +83,8 @@ export default (state= initialState, action) => {
         }
         return{
           ...state,
-          musicId:action.payload,
+          musicId:id,
+          isPremium,
           isPlayerShown: true,
           playing: handleSetPlay()
         }

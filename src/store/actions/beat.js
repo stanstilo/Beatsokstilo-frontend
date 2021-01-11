@@ -12,9 +12,11 @@ export const fetchBeatUpload = () => async (dispatch) => {
    }
 }
 
-export const fetchSingleBeat = id => async (dispatch) => {
+export const fetchSingleBeat = (id, isPremium) => async (dispatch) => {
+    console.log({id, isPremium})
     try{
-        const {data} = await axios.get(`http://localhost:5000/upload/${id}`)
+        const URL = isPremium ? `http://localhost:5000/sell/${id}` : `http://localhost:5000/upload/${id}`
+        const {data} = await axios.get(URL)
         dispatch({
             type:actionTypes.FETCH_SINGLE_BEAT, payload:data
         })

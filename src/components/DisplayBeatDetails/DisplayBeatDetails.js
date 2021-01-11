@@ -33,7 +33,7 @@ const DisplayBeatDetails = ({beat}) => {
           <div
             className="card__top"
             onClick={() => {
-              dispatch(showAudioplayer(_id));
+              dispatch(showAudioplayer({id:_id, isPremium:false}));
             }}
           >
             <div className="image-play-icon-container">

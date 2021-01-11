@@ -28,8 +28,8 @@ export const toggleRandom = (id) => dispatch=>{dispatch({ type: actionTypes.TOGG
 // End of Song
 
 
-export const showAudioplayer = (id) => dispatch => {  
-    dispatch({type:actionTypes.SHOW_AUDIOPLAYER, payload:id})
+export const showAudioplayer = ({id,isPremium}) => dispatch => {  
+    dispatch({type:actionTypes.SHOW_AUDIOPLAYER, payload:{id,isPremium}})
 }
 
 export const playAudio = id => dispatch => {

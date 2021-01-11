@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PlayerState from "./PlayerState";
 import Controls from "./Controls";
 import "./AudioPlayer.css";
@@ -6,10 +6,14 @@ import "./input.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleBeat } from "../../store/actions/beat";
 
-const AudioPlayer = ({ audio, handleProgress }) => {
+const AudioPlayer = () => {
   const reduxState = useSelector(state => state);
-  const { musicId,  playing } = reduxState.playerReducer;
+  const audio = useRef("audio_tag");
+
+  const [dur, setDur] = useState(0);
+  const { musicId,  playing, isPremium } = reduxState.playerReducer;
   const {singleBeat: {mp3File}, singleBeat } = reduxState.beatReducer
+  const [currentTime, setCurrentTime] = useState(0);
   
 
 
@@ -21,7 +25,7 @@ const AudioPlayer = ({ audio, handleProgress }) => {
     //store current music id in state
     //only fetch when currentid is not equal to passed id
     if (currentPlayingMusicID !== musicId) {
-      dispatch(fetchSingleBeat(`${musicId}`));
+      dispatch(fetchSingleBeat(musicId, isPremium));
       setCurrentPlayingMusicID(musicId);
     }
   }, [musicId]);
@@ -38,14 +42,27 @@ const AudioPlayer = ({ audio, handleProgress }) => {
       }
     };
     toggleAudio();
+
+    console.log({mp3File, playing})
   }, [mp3File, playing]);
 
   // useEffect(() => {
   //   console.log("TIMEUPDATE", audio.current.currentTime);
   // }, [audio.current.currentTime]);
 
+  const handleProgress = (e) => {
+    let compute = (e.target.value * dur) / 100;
+    setCurrentTime(compute);
+    audio.current.currentTime = compute;
+  };
+
+  console.log({audio})
+
   return (
     <PlayerState>
+            <audio  ref={audio} src  onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
+          onCanPlay={(e) => setDur(e.target.duration)} type="audio/mpeg" preload="true"/> 
+        
       <div className="main">
         <Controls
           mp3File={singleBeat.mp3File}
