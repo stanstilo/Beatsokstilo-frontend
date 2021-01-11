@@ -41,7 +41,7 @@ const Controls = ({id, audio, handleProgress}) => {
  
   const dispatch = useDispatch()
   const reduxState = useSelector(state => state)
-  const { playing, isPlayerShown} = reduxState.playerReducer
+  const { playing, isPlayerShown, isPremium, musicId} = reduxState.playerReducer
   const {mp3File}= reduxState.beatReducer.singleBeat
 
   const [statevolum, setStateVolum] = useState(0.8);
@@ -97,7 +97,7 @@ const Controls = ({id, audio, handleProgress}) => {
           className="play"
          >
           <span>
-            <FontAwesomeIcon onClick = {() => dispatch(showAudioplayer(id))} icon={playing ? faPause : faPlay} />
+            <FontAwesomeIcon onClick = {() => dispatch(showAudioplayer({musicId, isPremium}))} icon={playing ? faPause : faPlay} />
           </span>
         </span>
 
