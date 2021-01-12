@@ -28,7 +28,7 @@ library.add(
   faDownload
 );
 
-const Controls = ({id, audio, handleProgress}) => {
+const Controls = ({audio, handleProgress}) => {
   const {  
     nextSong,
     prevSong,

@@ -16,7 +16,6 @@ const FreeBeat = () => {
   const {beatInfo} = reduxState.beatReducer
 
   const audio = useRef("audio_tag");
-  // const [dur, setDur] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentPage, setCurrentPage] = useState(1)
   const [beatPerPage] = useState(4)
@@ -25,12 +24,7 @@ const FreeBeat = () => {
     const indexOfFirstBeat = indexOfLastBeat - beatPerPage
     const currentBeatInfo = beatInfo.slice(indexOfFirstBeat, indexOfLastBeat)
 
-    // const handleProgress = (e) => {
-    //   let compute = (e.target.value * dur) / 100;
-    //   setCurrentTime(compute);
-    //   audio.current.currentTime = compute;
-    // };
-
+    
   // Change Page On Click
   const paginate = pageNumber =>  setCurrentPage(pageNumber)
 
@@ -51,11 +45,7 @@ const FreeBeat = () => {
         <div className="row">{beats}</div>
         <Pagination beatPerPage={beatPerPage} totalBeat={beatInfo.length} paginate={paginate}/>
         <div className="audioplayer">
-        <AudioPlayer
-        //  handleProgress={handleProgress}  
-        //  audio={audio}
-        // dur={dur}
-        />
+        <AudioPlayer/>
         </div>
       </div>
   );

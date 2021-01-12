@@ -8,12 +8,15 @@
 .container{
   min-height:100vh;
 }
+.row{
+  justify-content: center;
+  align-items: center;
+}
 .beatsloop-row{
   padding-top:124px;
 }
 .play-button{
   padding-left:85%;
-  border:1px solid red;
   height:30px
 }
 .bpm-column{

@@ -17,15 +17,14 @@ const BuyBeatsDetails = ({ singleSell, match, history }) => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-md-6">
-            <img className="artist-photo" style={{width:"220px", height:"150px"}} src={imageFile} alt="artistphoto" /> 
+          <div>
+            <img className="artist-photo" style={{width:"220px", height:"150px", borderRadius:'50%'}} src={imageFile} alt="artistphoto" /> 
             <p className="beat-title"> {title} </p>
             <p className="bpm">BPM: {bpm}</p>
             <p className="bpm">PRODUCER : {name}</p>
             <button className="btn btn-success" onClick={()=>history.push("/initialize")}>Buy Now</button>
             <button className="btn btn-danger ml-3">Negotiate</button>
           </div>
-          <div className="col-md-2"></div>
         </div>
       </div>
     </>
