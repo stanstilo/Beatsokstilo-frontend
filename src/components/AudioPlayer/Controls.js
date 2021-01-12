@@ -51,9 +51,7 @@ const Controls = ({audio, handleProgress}) => {
     const fmtMSS = (s) => {
     return (s - (s %= 60)) / 60 + (9 < s ? ":" : ":0") + ~~s;
     };
-        
-   const toggleAudio = () =>  audio.current.paused ? audio.current.play() : audio.current.pause();
-   
+         
    const handleVolume = (q) => {
       setStateVolum(q);
       audio.current.volume = q;

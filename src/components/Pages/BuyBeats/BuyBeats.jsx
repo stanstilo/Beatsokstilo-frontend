@@ -16,6 +16,7 @@ library.add(faPlay, faPause);
 
 const BuyBeats = ({ sellInfo }) => {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(fetchSell());
   }, []);
@@ -30,6 +31,7 @@ const BuyBeats = ({ sellInfo }) => {
 
   const beatsLoop = sellInfo.map((beat) => {
     const { _id, title, price, bpm} = beat
+
     const handlePlayPauseIcon = () => {
       if (playing && _id == musicId){
         return faPause
@@ -80,7 +82,7 @@ const BuyBeats = ({ sellInfo }) => {
 
   return (
     <>
-      <div className="all-containers">
+      <div className="buy-beats-container">
         <div className="container">
           <div className="row beatsloop-row">
             {beatsLoop}

@@ -89,19 +89,7 @@ export default (state= initialState, action) => {
           playing: handleSetPlay()
         }
       
-        // case actionTypes.PLAY_AUDIO:
-        //   const handleSetPlay = () => {
-        //     if(state.musicId === action.payload){
-        //       return !state.playing 
-        //     }else{
-        //       return true
-        //     }
-        //   }
-        //   return{
-        //     ...state,
-        //     playing:handleSetPlay()
-        //   }
-          
+      
       case actionTypes.SETVOLUME:
         return{
           ...state,

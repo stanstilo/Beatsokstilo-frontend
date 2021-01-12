@@ -19,7 +19,6 @@ export const sellSelector = createSelector([selectSell], sell => sell.sellInfo)
 export const singleSellSelector = createSelector([selectSell], sell => sell.singleSell)
 
 
-
 // player selector
 const selectPlayer= (state) => state.playerReducer;
 export const audioPlayerSelector = createSelector([selectPlayer], player => player.audioPlayer)
