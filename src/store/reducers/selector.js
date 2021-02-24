@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect'
 
-
 //auth selector
 const selectAuth = (state) => state.authReducer;
 export const isAuthenticatedSelector = createSelector([selectAuth], auth => auth.isAuthenticated)
@@ -17,7 +16,6 @@ export const singleBeatSelector = createSelector([beatSelector], beat => beat.si
 const selectSell = (state) => state.sellReducer;
 export const sellSelector = createSelector([selectSell], sell => sell.sellInfo)
 export const singleSellSelector = createSelector([selectSell], sell => sell.singleSell)
-
 
 // player selector
 const selectPlayer= (state) => state.playerReducer;

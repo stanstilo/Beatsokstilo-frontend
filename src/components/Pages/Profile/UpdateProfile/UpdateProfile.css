@@ -1,0 +1,61 @@
+.update-profile-body{
+    background-color:#f3f3f3;
+    height:100vh;
+    width:100%
+}
+
+.profile-image-upload{
+    height:250px;
+    background-color:#000;
+    text-align:center;
+    padding-top:80px;
+}
+.profile-image-upload-container{
+    width:100%;
+}
+
+.banner-text{
+    color:#fff
+}
+
+.edit-profile{
+ display:flex
+}
+
+.camera-aside{
+    color:#000
+}
+
+.banner-btn{
+    border:none;
+    outline:none
+}
+.profile-aside{
+    width:10%;
+    background-color:#fff;
+    height:150px
+}
+.view-profile-btn{
+    outline:none;
+    border:none;
+    border-radius:40%
+}
+
+.camera-centre{
+    font-size:35px;
+    color:#fff;
+}
+.Fauser-plus{
+  font-size:35px
+}
+
+.update-profile-table-container{
+    width:60% !important;
+    margin-top:250px !important;
+    border-radius:0px;
+    padding:20px;
+    /* margin-bottom:100px; */
+    box-shadow:0px 4px 10px 0px rgb(0 0 0/25%);
+    z-index:6
+}
+

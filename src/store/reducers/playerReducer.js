@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import * as actionTypes from "../actions/actionTypes";
 import { SetCurrent } from "../actions/player";
 
@@ -88,7 +89,6 @@ export default (state= initialState, action) => {
           isPlayerShown: true,
           playing: handleSetPlay()
         }
-      
       
       case actionTypes.SETVOLUME:
         return{

@@ -1,7 +1,8 @@
+/* eslint-disable import/no-anonymous-default-export */
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  token: null,
+  token: localStorage.getItem('token'),
   userId: null,
   error: {},
   loading: false,
@@ -16,7 +17,7 @@ export default (state = initialState, action) => {
         isAuthenticated: true,
         loading: false,
         userId: action.payload,
-        token: action.payload,
+        token: localStorage.getItem('token')
       };
     case actionTypes.AUTH_FAIL:
         return{

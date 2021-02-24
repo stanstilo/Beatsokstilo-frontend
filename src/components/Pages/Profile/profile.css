@@ -1,0 +1,49 @@
+*{
+    box-sizing:border-box;
+}
+
+.profile{
+    background-color:#F4F4F4;
+    width:100%;
+    height:auto;
+    padding-top:45px;
+    position:relative;
+}
+
+.profile-container{  
+     height:auto;
+}
+
+.profile-content{
+   width:60%;
+    margin:0px auto;
+    height:auto;
+    background-color: #fff;
+    box-shadow: 2px 2px 2px 2px #fffbfb;
+}
+
+.userplus{
+    font-size:56px;
+    position:absolute;
+    top:20px
+}
+.username{
+  padding-left:120px;
+}
+.profile-monitoring-activities{
+    display:flex;
+    margin-top:15px;
+    width:90%;
+    justify-content:space-evenly
+}
+.profile-monitoring-activities li{
+    list-style-type: none;
+    cursor:pointer;
+    font-weight: 600;
+    font-size:1em;
+}
+
+h6{
+  padding-left:40px;
+}
+

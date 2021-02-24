@@ -6,7 +6,7 @@ import {createStructuredSelector} from "reselect"
 import {isAuthenticatedSelector, isErrorSelector} from '../../store/reducers/selector'
 import { Redirect, withRouter } from 'react-router-dom'
 import { StyledForm } from '../styles/Signin.style' 
-import { checkIfUserIsLoggedIn } from '../utility';
+// import { checkIfUserIsLoggedIn } from '../utility';
 
 const validate = values => {
   const errors = {}
@@ -22,7 +22,6 @@ const validate = values => {
   }
   return errors
 }
-
 const renderField = ({
   input,
   label,
@@ -42,17 +41,16 @@ const renderField = ({
 
 const LoginForm = ({authLogin, handleSubmit, submitting, auth, error, history }) => {
 
-  useEffect(() => {
-   checkIfUserIsLoggedIn() && history.push('/dashboard')
-  }, [])
+  // useEffect(() => {
+  //  checkIfUserIsLoggedIn() && history.push('/dashboard')
+  // }, [])
 
   const submit = values =>{
     authLogin(values);
   }
 
   if(auth){
-    // return <Redirect to ='/dashboard'/>
-    history.push('/dashboard')
+    return <Redirect to ='/profile'/>
   }
 
   return (

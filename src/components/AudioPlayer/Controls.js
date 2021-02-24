@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState,  useContext } from "react";
 import playerContext from "../Context/playerContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -143,5 +144,6 @@ const Controls = ({audio, handleProgress}) => {
    </>  
   );
 };
+
 
 export default Controls;

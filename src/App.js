@@ -13,7 +13,8 @@ import BuyBeatsDetails from "./components/Pages/BuyBeats/BuyBeatsDetails";
 import { fetchBeatUpload, fetchSingleBeat } from "./store/actions/beat";
 import { useDispatch, useSelector } from "react-redux";
 import Checkout from "./components/Pages/Checkout/Checkout";
-// import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import Profile from "./components/Pages/Profile/Profile";
+import UpdateProfile from './components/Pages/Profile/UpdateProfile/UpdateProfile'
 
 
 const App = () => {
@@ -35,16 +36,19 @@ const App = () => {
     <div>
       <Layout>
         <Switch>
-          <Route path="/" exact component={Home} />
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
           <Route path="/buy-beats" component={BuyBeats} />
-          <Route path="/sell-beats" component={SellBeats} />
-          <Route path="/upload-beat" exact component={UploadBeat} />
+          <PrivateRoute path='/sell-beats' render={(props) => <SellBeats {...props}/>}/>
+          {/* <Route path="/sell-beats" component={SellBeats} /> */}
+          <PrivateRoute path='/upload-beat' render={(props) => <UploadBeat {...props}/>}/>
           <Route path="/free-beat" exact component = {FreeBeat} />
           {/* <PrivateRoute path="/buy-beats-details/:id" render={(props) => <BuyBeatsDetails {...props}/>}/> */}
           <Route path="/buy-beats-details/:id" component = {BuyBeatsDetails}/>
           <Route path="/initialize" component={Checkout}/>
+          <Route path='/profile' component={Profile}/>
+          <Route path='/edit' component = {UpdateProfile}/>
+          <Route path="/" exact component={Home} />
         </Switch>
       </Layout>
     </div>

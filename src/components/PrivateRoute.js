@@ -6,7 +6,9 @@ import {
   isAuthenticatedSelector,
   isLoadingSelector,
 } from "../store/reducers/selector";
+
 import { createStructuredSelector } from "reselect";
+import {checkIfUserIsLoggedIn} from './utility'
 
 const PrivateRoute = ({
   render: Component,
@@ -19,7 +21,7 @@ const PrivateRoute = ({
       render={(props) => {
         if (isLoading) {
           return <div>Loading....</div>;
-        } else if (!isAuthenticated) {
+        } else if (!checkIfUserIsLoggedIn && !isAuthenticated) {
           return (
             <Redirect
               to={{

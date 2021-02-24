@@ -2,9 +2,9 @@ import React from 'react'
 import './SearchItem.css'
 
 const SearchItem = ({searchBeats}) => {
-    return (
+  return (
     <div className = "search-card">
-      {searchBeats.map((beat) => {
+      {searchBeats.map(beat => {
        return (
        <div key = {beat._id}>
          <p>{beat.title}</p>

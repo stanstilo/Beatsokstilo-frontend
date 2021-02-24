@@ -1,6 +1,5 @@
 import React from 'react'
 import FreeBeat from '../Pages/FreeBeat/FreeBeat'
-import axios from 'axios'
 import './Main.css'
 
  const Main = () => {
